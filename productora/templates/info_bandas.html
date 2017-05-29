@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block link %}
+	<link rel="stylesheet" href="{% static "css/info_bandas.css" %}">
+{% endblock link %}
+
+{% block content %}
+	<section class="bandas">
+		<div class="container_up">
+			<div class="left">
+				<img src="{{ banda.imagen.url }} " alt="{{ banda.name }} " class="big_image">
+			</div>
+			<div class="right">
+				<h2 class="letras titulo"> {{ banda.name }} </h2>
+				<p class="letras contenido"> {{ banda.historia }} </p>
+			</div>
+		</div>
+		<div class="container_middle">
+			<div class="container_int">
+				<h4 class="sub">Integrantes: </h4>
+				<ul>
+					{% if banda.integrante_1 != 'null' %}
+						<li class="integrantes">
+							<p>{{ banda.integrante_1 }}</p>
+						</li>
+					{% endif %}
+					{% if banda.integrante_2 != 'null' %}
+						<li class="integrantes">
+							<p>{{ banda.integrante_2 }}</p>
+						</li>
+					{% endif %}
+					{% if banda.integrante_3 != 'null' %}
+						<li class="integrantes">
+							<p>{{ banda.integrante_3 }}</p>
+						</li>
+					{% endif %}
+					{% if banda.integrante_4 != 'null' %}
+						<li class="integrantes">
+							<p>{{ banda.integrante_4 }}</p>
+						</li>
+					{% endif %}
+					{% if banda.integrante_5 != 'null' %}
+						<li class="integrantes">
+							<p>{{ banda.integrante_5 }}</p>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+			<div class="container_video">
+				{% if banda.url_video != "null" %}
+					<iframe class="space_middle" src="{{ banda.url_video }}?&autoplay=1" frameborder="0" allowfullscreen></iframe>
+				{% else %}
+					<img class="space_middle" src="{{ banda.imagen2.url }}" alt="">					
+				{% endif %}
+			</div>
+			<div class="container_social">
+				<h4 class="sub">Redes Sociales: </h4>
+				<ul>
+					{% if banda.url_facebook != 'null' %}
+						<li>
+							<a href="#facebook_banda" target="_blank">
+								<img class="facebook_banda" src="{% static "image/logo/facebook.png" %} " alt="facebook">
+								<p class="p_social">/cincoletras</p>
+							</a>
+						</li>
+					{% endif %}
+					{% if banda.url_twitter != 'null' %}
+						<li>
+							<a href="#twitter_banda" target="_blank">
+								<img class="twitter_banda" src="{% static "image/logo/twitter.png" %} " alt="twitter">
+								<p class="p_social">@cincoletras</p>
+							</a>
+						</li>
+					{% endif %}
+					{% if banda.url_youtube != 'null' %}
+						<li>
+							<a href="#youtube_banda" target="_blank">
+								<img class="youtube_banda" src="{% static "image/logo/youtube.png" %} " alt="youtube">
+								<p class="p_social p_you">//cincoletras</p>
+							</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>	
+		</div>
+		<div class="container_down">
+			<input type="button" class="boton" id="boton" onclick="boton()" value="PROMOS">
+				<div class="container_promos" id="promos">
+					<ul>
+						<li>
+							<a href="#" class="mini_promos">
+								<img src="{% static "image/CincoLetras 1/Band-1.jpg" %}" alt="" class="img_min">
+								<p> Promo 1 de Cincoletras</p>								
+							</a>
+						</li>
+						<li>
+							<a href="#" class="mini_promos">
+								<img src="{% static "image/CincoLetras 1/Band-1.jpg" %}" alt="" class="img_min">
+								<p> Promo 1 de Cincoletras</p>								
+							</a>
+						</li>
+						<li>
+							<a href="#" class="mini_promos">
+								<img src="{% static "image/CincoLetras 1/Band-1.jpg" %}" alt="" class="img_min">
+								<p> Promo 1 de Cincoletras</p>								
+							</a>
+						</li>
+					</ul>	
+				</div>
+			<a href="#fotos(lugar_cincoletras)">
+				<input type="button" class="boton" value="FOTOS">			
+			</a>
+		</div>
+	</section>
+	<script type="text/javascript">
+	var $boton = document.getElementById('boton');
+	var $promo = document.getElementById('promos');
+
+	function boton(){
+		$promo.classList.toggle('active_promo');
+		$boton.classList.toggle('active_boton');
+	}
+	</script>
+{% endblock content %}

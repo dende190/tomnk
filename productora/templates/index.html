@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block link %}
+	<link rel="stylesheet" href="{% static 'css/tomnk.css' %}">
+{% endblock link %}
+
+{% block content %}
+	<section class="trabajos">
+		<div class="container_trabajos">
+			{% for i in banda %}
+				<a href="{% url 'info_bandas' pk=i.pk %} ">
+					<div class="container_image">
+						<figure class="banda">
+								<img src="{{ i.imagen.url }} " alt="{{ i.name }} " class="principal">
+								<p> {{ i.name }} </p>	
+								<img src="{{ i.logo.url }} " alt="{{ i.name }} " class="des">	
+						</figure>	
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock content %}

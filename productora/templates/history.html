@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block link %}
+	<link rel="stylesheet" href="{% static "css/history.css" %} ">
+{% endblock link %}
+
+{% block content %}
+	<section class="historia">
+		<div class="container_up">
+			<h1 class="titulo">TOMNK Producciones</h1>
+			<iframe class="video" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FTomnkProducciones%2Fvideos%2F998985803536950%2F&show_text=0&width=560" width="630" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+			<p>Productora audiovisual enfocada en proyectos artísticos, tanto musicales como cinematográficos. De esta forma buscamos iniciarnos en la industria, apoyando el talento nacional y así mismo proporcionar una práctica en nuestro oficio; proyectando una innovación en el medio universitario y social. </br></br>
+Los servicios que ofrecemos son los siguientes:</br></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	Videoclips </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	Videos promocionales </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	Fotografía</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	Diseño de logos</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	Reportajes y/o documentales de bandas musicales nacionales</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	Igualmente ofrece acompañamiento audiovisual, en eventos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;como conciertos, ensayos, etc.</br></br>
+Este proyecto cuenta con un año de vigencia. Creado por José Tomas Reinales Martin bajo el nombre de “Tomnk Producciones” y aspira realizar el registro de marca durante el 2017. A partir del primer semestre del año en curso, se ha conformado un equipo de trabajo con estudiantes de primer semestre de CINE de la Universidad Central
+</p>			
+		</div>
+		<div class="container_middle">
+			{% for i in tomnk %}
+				{% if i.pk == 1 or i.pk == 3 or i.pk == 5 or i.pk == 7 %}
+					<div class="container_foto_left">
+						<img class="foto_left foto" src="{{ i.foto.url }} " alt="{{ i.name }} ">
+						<div class="container_info_left">
+							<h3 class="nombre">{{ i.name }} </h3>
+							<p class="rese">{{ i.reseña }} </p>
+							<ul>
+								<li class="cargo">{{ i.cargo }} </li>
+							</ul>
+						</div>
+						<div class="container_redes_sociales_left">
+							{% if i.facebook != "null" %}
+								<a href="#">
+									<img class="facebook_per" src="{% static "image/logo/facebook.png" %} " alt="">
+								</a>
+							{% endif %}
+							{% if i.twitter != "null" %}
+							<a href="#">
+								<img class="twitter_per" src="{% static "image/logo/twitter.png" %} " alt="">
+							</a>
+							{% endif %}
+							{% if i.youtube != "null" %}
+							<a href="#">
+								<img class="youtube_per" src="{% static "image/logo/youtube.png" %} " alt="">
+							</a>
+							{% endif %}
+						</div>
+					</div>
+				{% elif i.pk == 2 or i.pk == 4 or i.pk == 6 or i.pk == 8 %}
+					<div class="container_foto_right">
+						<div class="container_redes_sociales_right">
+							{% if i.facebook != "null" %}
+								<a href="#">
+									<img class="facebook_per" src="{% static "image/logo/facebook.png" %} " alt="">
+								</a>
+							{% endif %}
+							{% if i.twitter != "null" %}
+							<a href="#">
+								<img class="twitter_per" src="{% static "image/logo/twitter.png" %} " alt="">
+							</a>
+							{% endif %}
+							{% if i.youtube != "null" %}
+							<a href="#">
+								<img class="youtube_per" src="{% static "image/logo/youtube.png" %} " alt="">
+							</a>
+							{% endif %}
+						</div>
+						<div class="container_info_right">
+							<h3 class="nombre_right">{{ i.name }} </h3>
+							<p class="rese_right">{{ i.reseña }} </p>
+							<ul class="right_ul">
+								<li class="cargo">{{ i.cargo }} </li>
+							</ul>
+						</div>
+						<img class="foto_right foto" src="{{ i.foto.url }} " alt="{{ i.name }} ">
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+		<div class="container_down">
+			<h1>clientes:</h1>		
+			<p>•	Flaming Skull (Banda nacional de metal)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Videoclip “Walls Painted Green”</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Reportaje en el festival de festivales 2016 en la Media Torta</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Fotografías</br></br>
+
+•	Colombia Devastation (Proyecto Audiovisual)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Entrevista para canal de YouTube de bandas de metal</br></br>
+
+•	VNY (Dj)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Video Promo</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Fotografías</br></br>
+
+•	Doga Café (Café – Bar)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Video Promo</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Fotografías publicitarias</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Publicidad</br></br>
+
+•	Beat Glider – Chambonarts (Video juego)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Video Promo</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Fotografías </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o	Publicidad</br></br>
+</p>
+		</div>
+	</section>
+{% endblock content %}

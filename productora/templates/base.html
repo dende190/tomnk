@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+	{% block link %}		
+	{% endblock link %}
+
+	<title>Tomnk Producciones</title>
+</head>
+<body>
+	<section class="encabezado back">
+		<header>
+			<figure class="logo">
+				<img src="{% static 'image/logo/Logo Tomnk Blanco.png' %}" alt="logo tomnk blanco">
+			</figure>
+			<div class="redes_sociales">
+				<ul>
+					<li>
+						<a href="https://www.facebook.com/TomnkProducciones/?fref=ts" target="_blank">
+							<img class="facebook" src="{% static "image/logo/facebook.png" %} " alt="facebook">
+						</a>
+					</li>
+					<li>
+						<a href="#twitter" target="_blank">
+							<img class="twitter" src="{% static "image/logo/twitter.png" %} " alt="twitter">
+						</a>
+					</li>
+					<li>
+						<a href="https://www.youtube.com/channel/UCZaqxAI64HLSzvXOrzjd9VQ" target="_blank">
+							<img class="youtube" src="{% static "image/logo/youtube.png" %} " alt="youtube">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+	</section>
+	<section class="contenido">
+		<div class="container_menu">
+			<nav class="menu">
+				<ul>
+					<li>
+						{% if request.get_full_path == '/' %}
+							<a href="/" class="in">INICIO</a>
+						{% else %}
+							<a href="/" class="op_menu">INICIO</a>
+						{% endif %}
+					</li>
+					<li>
+						{% if request.get_full_path == '/historia' %}
+							<a href="{% url 'history' %}" class="in">HISTORIA</a>
+						{% else %}
+							<a href="{% url 'history' %}" class="op_menu">HISTORIA</a>
+						{% endif %}
+					</li> 
+					<li>
+						{% if request.get_full_path == '/fotos' %}
+							<a href="{% url 'pictures' %}" class="in">FOTOS</a>
+						{% else %}
+							<a href="{% url 'pictures' %}" class="op_menu">FOTOS</a>
+						{% endif %}
+					</li>
+					<li>
+						{% if request.get_full_path == '/contacto' %}
+							<a href="/contacto" class="in">CONTACTO</a>
+						{% else %}
+							<a href="/contacto" class="op_menu">CONTACTO</a>
+						{% endif %}
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+	{% block content %}
+
+	{% endblock content %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.6.3/blazy.min.js"></script>	
+	<script>
+		var blazy = new Blazy({
+			selector: 'img'
+		});
+	</script>
+</body>
+</html>

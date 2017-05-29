@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block link %}
+	<link rel="stylesheet" href="{% static "css/contact.css" %} ">
+{% endblock link %}
+
+{% block content %}
+	<section class="contacto">
+		<div class="container_up">
+			<img class="imagen" src="{% static "image/logo/Logo Tomnk Blanco.png" %}" height="565" width="972" alt="logo">
+		</div>		
+		<form method="post" class="formulario">
+			{% csrf_token %}
+			{{ formulario.as_p }}
+			<button type="submit">Enviar</button>
+			{# {{ formulario.as_p }} #}
+			<!-- <div class="col_1">
+				<label for="nombre">Nombre: </label>
+				<input type="text" required placeholder="Nombre" id="nombre" name="nombre">
+				<label for="apellido">Apellido: </label>
+				<input type="text" required placeholder="Apellido" id="apellido" name="apellido">
+			</div>
+			<div class="col_2">
+				<label class="em" for="email">Email: </label>
+				<input type="email" required placeholder="nombre@dominio.com" id="email" name="email">
+				<label for="banda">
+					<input class="check" type="radio" checked id="banda" name="check" value="banda" required> Banda
+				</label>
+				<label for="personal">
+					<input class="check" type="radio" id="personal" name="check" value="personal" required> Personal
+				</label>
+			</div>
+			<div class="col_3">
+				<label class="comen" for="comentarios">Mensaje</label>
+				<textarea name="comentarios" id="comentarios" cols="30" rows="7"></textarea>
+				<button type="submit">Submit</button>
+			</div> -->
+		</form>
+	</section>
+{% endblock content %}
